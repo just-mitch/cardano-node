@@ -75,19 +75,11 @@ jobs:
           *)            echo "CABAL_VERSION=3.4.0.0-rc4"  >> $GITHUB_ENV;;
         esac
 
-    - uses: actions/setup-haskell@v1
+    - uses: haskell-works/actions/setup@371a76082a1d13e736ae6cc954bbfd6662fe46d5
       id: setup-haskell
       with:
         ghc-version: ${{ matrix.ghc }}
         cabal-version: ${{ env.CABAL_VERSION }}
-
-    - name: MacOS cabal setup work-around
-      if: matrix.os == 'macos-latest'
-      run: |
-        echo insecure >> $HOME/.curlrc
-        ghcup install cabal 3.4.0.0-rc4
-        ghcup set cabal 3.4.0.0-rc4
-        rm $HOME/.curlrc
 
     - name: Windows cabal setup work-around
       if: matrix.os == 'windows-latest'
