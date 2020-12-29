@@ -71,11 +71,11 @@ jobs:
     - name: Select optimal cabal version
       run: |
         case "$OS" in
-          Windows_NT)   echo "CABAL_VERSION=3.2.0.0"      >> $GITHUB_ENV;;
+          Windows_NT)   echo "CABAL_VERSION=3.4.0.1-rc3"  >> $GITHUB_ENV;;
           *)            echo "CABAL_VERSION=3.4.0.0-rc4"  >> $GITHUB_ENV;;
         esac
 
-    - uses: haskell-works/actions/setup@371a76082a1d13e736ae6cc954bbfd6662fe46d5
+    - uses: haskell-works/actions/setup@stuff
       id: setup-haskell
       with:
         ghc-version: ${{ matrix.ghc }}
